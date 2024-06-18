@@ -40,7 +40,7 @@ chown "$app:$app" "$install_dir/config.toml"
 mkdir -p "$install_dir/content" "$install_dir/static" "$install_dir/templates" "$install_dir/themes/yunohost/templates"
 
 ynh_add_config --template="theme.toml" --destination="$install_dir/themes/yunohost/theme.toml"
-ynh_add_config --template="theme.html" --destination="$install_dir/themes/yunohost/templates/theme.html"
+ynh_add_config --template="theme.html" --destination="$install_dir/themes/yunohost/templates/index.html"
 
 ynh_add_config --template="_index.md" --destination="$install_dir/content/_index.md"
 
