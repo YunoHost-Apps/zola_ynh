@@ -45,6 +45,7 @@ ram.runtime = "50M"
     [resources.sources.main]
     url = "https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.18.0-x86_64-unknown-linux-gnu.tar.gz"
     sha256 = "521ca7990b60e1270df807e01cbeb1ce69ef099745883b7929a4944cd5625d3e"
+    in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset = "^zola-v.*-x86_64-unknown-linux-gnu.tar.gz$"
