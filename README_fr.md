@@ -21,7 +21,7 @@ Zola est un [générateur de site statique](https://fr.wikipedia.org/wiki/G%C3%A
 Avec ce package, Zola régénérera automatiquement ([à l'aide de Systemd Path Units](https://www.putorius.net/systemd-path-units.html)) votre site web si une modification est apportée à vos sources.
 
 
-**Version incluse :** 0.18.0~ynh1
+**Version incluse :** 0.18.0~ynh2
 
 ## Captures d’écran
 
