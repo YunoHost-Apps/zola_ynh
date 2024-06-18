@@ -1,0 +1,13 @@
+[Unit]
+Description="Lauch 'zola build' on content change"
+
+[Path]
+PathModified=__INSTALL_DIR__/content
+PathModified=__INSTALL_DIR__/static
+PathModified=__INSTALL_DIR__/templates
+PathModified=__INSTALL_DIR__/config.toml
+PathModified=__INSTALL_DIR__/themes
+Unit=__APP__.service
+
+[Install]
+WantedBy=multi-user.target
