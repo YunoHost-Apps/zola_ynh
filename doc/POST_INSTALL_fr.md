@@ -1,4 +1,4 @@
-- Votre Zola est installé dans `__INSTALL_DIR__`
+- Votre Zola est installé dans `__INSTALL_DIR__` et accessible à l'adresse <https://__DOMAIN__>
 - Votre contenu doit être dans `__INSTALL_DIR__/content`
 - Votre fichier de configuration est `__INSTALL_DIR__/config.toml` (voir [la doc de configuration](https://www.getzola.org/documentation/getting-started/configuration/))
 - [Choisissez un thème](https://www.getzola.org/themes/), installez-le dans `__INSTALL_DIR__/themes`, puis configurez-le dans votre fichier `config.toml`.
