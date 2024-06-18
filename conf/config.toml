@@ -56,7 +56,7 @@ feed_filename = "atom.xml"
 hard_link_static = false
 
 # The default author for pages
-author = 
+author = ""
 
 # The taxonomies to be rendered for the site and their configuration of the default languages
 # Example:
