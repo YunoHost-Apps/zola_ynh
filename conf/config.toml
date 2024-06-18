@@ -9,7 +9,7 @@ description = ""
 default_language = "en"
 
 # The site theme to use.
-theme = ""
+theme = "yunohost"
 
 # For overriding the default output directory `public`, set it to another value (e.g.: "docs")
 output_dir = "public"
@@ -83,7 +83,7 @@ extra_syntaxes_and_themes = []
 
 # The theme to use for code highlighting.
 # See below for list of allowed values.
-highlight_theme = "base16-ocean-dark"
+highlight_theme = "dracula"
 
 # When set to "true", emoji aliases translated to their corresponding
 # Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)

@@ -37,6 +37,15 @@ ynh_add_config --template="config.toml" --destination="$install_dir/config.toml"
 chmod 400 "$install_dir/config.toml"
 chown "$app:$app" "$install_dir/config.toml"
 
+mkdir -p "$install_dir/content" "$install_dir/static" "$install_dir/templates" "$install_dir/themes/yunohost/templates"
+
+ynh_add_config --template="theme.toml" --destination="$install_dir/themes/yunohost/theme.toml"
+ynh_add_config --template="theme.html" --destination="$install_dir/themes/yunohost/templates/theme.html"
+
+ynh_add_config --template="_index.md" --destination="$install_dir/content/_index.md"
+
+chown -R "$app:www-data" "$install_dir"
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
@@ -54,12 +63,6 @@ ynh_use_logrotate
 #=================================================
 # DEFAULT WEBSITE GENERATION
 #=================================================
-
-mkdir "$install_dir/content" "$install_dir/static" "$install_dir/templates" "$install_dir/themes"
-
-ynh_add_config --template="_index.md" --destination="$install_dir/content/_index.md"
-
-chown -R "$app:www-data" "$install_dir"
 
 "$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml" build
 
