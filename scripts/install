@@ -51,9 +51,13 @@ ynh_use_logrotate
 # DEFAULT WEBSITE GENERATION
 #=================================================
 
+mkdir "$install_dir/content" "$install_dir/static" "$install_dir/templates" "$install_dir/themes"
+
 ynh_add_config --template="_index.md" --destination="$install_dir/content/_index.md"
 
-"$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml"
+chown -R "$app:www-data" "$install_dir"
+
+"$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml" build
 
 #=================================================
 # END OF SCRIPT
