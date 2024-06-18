@@ -57,6 +57,8 @@ ynh_add_nginx_config
 ynh_add_config --template="systemd.service" --destination="/etc/systemd/system/$app.service"
 ynh_add_config --template="systemd.path" --destination="/etc/systemd/system/$app.path"
 systemctl daemon-reload
+systemctl enable "$app".{path,service}
+systemctl start "$app.path"
 
 ynh_use_logrotate
 
@@ -64,7 +66,7 @@ ynh_use_logrotate
 # DEFAULT WEBSITE GENERATION
 #=================================================
 
-"$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml" build
+ynh_exec_as "$app" "$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml" build
 
 #=================================================
 # END OF SCRIPT
