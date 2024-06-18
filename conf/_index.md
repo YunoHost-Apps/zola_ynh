@@ -1,0 +1,17 @@
++++
+template = "index.html"
+title = "Hello World!"
++++
+
+Hi!
+
+There is your great future static site build with Zola ^w^
+
+Check [the docs](https://www.getzola.org/documentation/getting-started/overview/) to get started!
+
+## Tips
+
+- Your Zola is installed in `__INSTALL_DIR__`
+- Your content should be in `__INSTALL_DIR__/content`
+- Your config file is `__INSTALL_DIR__/config.toml`
+- This website will be automatically updated each time you modify something inside the `content`, `static`, `templates` or `themes` folders or the `config.toml` file!

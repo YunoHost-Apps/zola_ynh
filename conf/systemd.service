@@ -1,13 +1,12 @@
 [Unit]
-Description=Small description of the service
-After=network.target
+Description="Run 'zola build'"
 
 [Service]
-Type=simple
+Type=exec
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/script
+ExecStart=__INSTALL_DIR__/zola build
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
