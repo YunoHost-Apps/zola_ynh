@@ -25,7 +25,7 @@ Avec ce package, Zola régénérera automatiquement ([à l'aide de Systemd Path 
 
 ## Captures d’écran
 
-![Capture d’écran de Zola](./doc/screenshots/example.jpg)
+![Capture d’écran de Zola](./doc/screenshots/zola-screenshot.jpg)
 
 ## Documentations et ressources
 

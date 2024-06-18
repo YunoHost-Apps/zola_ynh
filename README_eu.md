@@ -25,7 +25,7 @@ With this package, Zola will automatically regenerate ([using Systemd Path Units
 
 ## Pantaila-argazkiak
 
-![Zola(r)en pantaila-argazkia](./doc/screenshots/example.jpg)
+![Zola(r)en pantaila-argazkia](./doc/screenshots/zola-screenshot.jpg)
 
 ## Dokumentazioa eta baliabideak
 

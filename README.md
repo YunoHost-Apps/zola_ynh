@@ -25,7 +25,7 @@ With this package, Zola will automatically regenerate ([using Systemd Path Units
 
 ## Screenshots
 
-![Screenshot of Zola](./doc/screenshots/example.jpg)
+![Screenshot of Zola](./doc/screenshots/zola-screenshot.jpg)
 
 ## Documentation and resources
 
