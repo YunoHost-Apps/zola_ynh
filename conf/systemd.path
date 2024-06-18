@@ -2,11 +2,11 @@
 Description="Lauch 'zola build' on content change"
 
 [Path]
-PathModified=__INSTAL_DIR__/content
-PathModified=__INSTAL_DIR__/static
-PathModified=__INSTAL_DIR__/templates
-PathModified=__INSTAL_DIR__/config.toml
-PathModified=__INSTAL_DIR__/themes
+PathModified=__INSTALL_DIR__/content
+PathModified=__INSTALL_DIR__/static
+PathModified=__INSTALL_DIR__/templates
+PathModified=__INSTALL_DIR__/config.toml
+PathModified=__INSTALL_DIR__/themes
 Unit=__APP__.service
 
 [Install]
