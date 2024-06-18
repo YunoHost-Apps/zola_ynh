@@ -48,6 +48,14 @@ systemctl daemon-reload
 ynh_use_logrotate
 
 #=================================================
+# DEFAULT WEBSITE GENERATION
+#=================================================
+
+ynh_add_config --template="_index.md" --destination="$install_dir/content/_index.md"
+
+"$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 ynh_script_progression --message="Installation of $app completed" --last
