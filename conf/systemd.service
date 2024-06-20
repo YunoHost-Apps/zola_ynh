@@ -6,7 +6,7 @@ Type=exec
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/zola build
+ExecStart=__INSTALL_DIR__/zola build && chown -R zola:www-data __INSTALL_DIR__
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
