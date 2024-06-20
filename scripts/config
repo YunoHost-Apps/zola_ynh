@@ -1,0 +1,48 @@
+#!/bin/bash
+
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source /usr/share/yunohost/helpers
+
+ynh_abort_if_errors
+
+#=================================================
+# RETRIEVE ARGUMENTS
+#=================================================
+
+
+
+#=================================================
+# SPECIFIC GETTERS
+#=================================================
+
+get__auto_rebuild() {
+
+    auto_rebuild=$(ynh_app_setting_get --app="$app" --key=auto_rebuild)
+
+    echo "$auto_rebuild"
+}
+
+#=================================================
+# SPECIFIC SETTERS
+#=================================================
+
+set__auto_rebuild() {
+
+    if $auto_rebuild; then
+        systemctl enable "$app.path" --quiet
+        systemctl start "$app.path"
+    else
+        systemctl disable "$app.path" --quiet
+        systemctl stop "$app.path"
+    fi
+
+    ynh_app_setting_set --app="$app" --key=auto_rebuild --value="$auto_rebuild"
+}
+
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
+ynh_app_config_run "$1"

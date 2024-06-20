@@ -1,0 +1,19 @@
+#:schema https://github.com/YunoHost/apps/raw/master/schemas/config_panel.v1.schema.json
+version = "1.0"
+
+[main]
+
+services = [ "__APP__" ]
+
+name.en = "Config panel"
+name.fr = "Panneau de configuration"
+
+    [main.config]
+
+        [main.config.auto_rebuild]
+        ask.en = "Auto-rebuild?"
+        bind = "null"
+        choices = [ "true", "false" ]
+        default = "true"
+        help.en = "Do you want Zola to automatically rebuild your website on files changes?"
+        type = "select"
