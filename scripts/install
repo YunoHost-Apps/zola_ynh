@@ -64,8 +64,10 @@ ynh_add_nginx_config
 ynh_add_config --template="systemd.service" --destination="/etc/systemd/system/$app.service"
 ynh_add_config --template="systemd.path" --destination="/etc/systemd/system/$app.path"
 systemctl daemon-reload
-systemctl enable "$app.path" --quiet
-systemctl start "$app.path"
+if $auto_rebuild; then
+    systemctl enable "$app.path" --quiet
+    systemctl start "$app.path"
+fi
 
 ynh_use_logrotate
 
