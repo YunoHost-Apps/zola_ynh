@@ -38,6 +38,12 @@ ram.runtime = "50M"
     type = "group"
     default = "visitors"
 
+    [install.auto_rebuild]
+    ask.en = "Auto-rebuild?"
+    help.en = "Do you want Zola to automatically rebuild your website on files changes?"
+    type = "boolean"
+    default = true
+
 [resources]
 
     [resources.sources]

@@ -11,9 +11,12 @@ source /usr/share/yunohost/helpers
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-#ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
-
+if [ -z "${auto_rebuild:-}" ]; then
+	auto_rebuild="true"
+	ynh_app_setting_set --app="$app" --key=auto_rebuild --value="$auto_rebuild"
+fi
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -41,8 +44,13 @@ ynh_add_nginx_config
 ynh_add_config --template="systemd.service" --destination="/etc/systemd/system/$app.service"
 ynh_add_config --template="systemd.path" --destination="/etc/systemd/system/$app.path"
 systemctl daemon-reload
-systemctl enable "$app.path" --quiet
-systemctl start "$app.path"
+if $auto_rebuild; then
+    systemctl enable "$app.path" --quiet
+    systemctl start "$app.path"
+else
+    systemctl disable "$app.path" --quiet
+    systemctl stop "$app.path"
+fi
 
 ynh_use_logrotate --non-append
 
