@@ -15,5 +15,5 @@ name.fr = "Panneau de configuration"
         bind = "null"
         choices = [ "true", "false" ]
         default = "true"
-        help.en = "Do you want Zola to automatically rebuild your website on files changes?"
+        help.en = "Do you want Zola to automatically rebuild your website when files have been modified?"
         type = "select"
