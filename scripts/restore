@@ -30,6 +30,12 @@ ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 ynh_restore_file --origin_path="/etc/systemd/system/$app.service"
 ynh_restore_file --origin_path="/etc/systemd/system/$app.path"
 systemctl daemon-reload
+if $auto_rebuild; then
+    systemctl enable "$app.path" --quiet
+    systemctl start "$app.path"
+fi
+
+yunohost service add "$app" --description="Zola" --log="/var/log/$app/$app.log" --test_status="systemctl is-active zola.path"
 
 ynh_restore_file --origin_path="/etc/logrotate.d/$app"
 
