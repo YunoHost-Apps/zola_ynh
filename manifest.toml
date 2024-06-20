@@ -40,7 +40,7 @@ ram.runtime = "50M"
 
     [install.auto_rebuild]
     ask.en = "Auto-rebuild?"
-    help.en = "Do you want Zola to automatically rebuild your website on files changes?"
+    help.en = "Do you want Zola to automatically rebuild your website when files have been modified?"
     type = "boolean"
     default = true
 
