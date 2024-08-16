@@ -77,7 +77,12 @@ ynh_use_logrotate
 # DEFAULT WEBSITE GENERATION
 #=================================================
 
+# runned using systemctl and not a direct command line to avoid conflicting withe the '.path'
+# (running two build process at the same time is buggy and can lead to errors)
 systemctl start "$app.service"
+
+# wait for the site to be builded (while the service is active, it's not done)
+while (systemctl -q is-active "$app.service") do sleep 0.01; done
 
 #=================================================
 # END OF SCRIPT
