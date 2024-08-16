@@ -5,7 +5,7 @@
 
 # YunoHost 上的 Zola
 
-[![集成程度](https://dash.yunohost.org/integration/zola.svg)](https://dash.yunohost.org/appci/app/zola) ![工作状态](https://ci-apps.yunohost.org/ci/badges/zola.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/zola.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/zola.svg)](https://ci-apps.yunohost.org/ci/apps/zola/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/zola.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/zola.maintain.svg)
 
 [![使用 YunoHost 安装 Zola](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=zola)
 
@@ -21,7 +21,7 @@ Zola is a [Static Site Generator](https://en.wikipedia.org/wiki/Static_site_gene
 With this package, Zola will automatically regenerate ([using Systemd Path Units](https://www.putorius.net/systemd-path-units.html)) your website if any change is made to your sources.
 
 
-**分发版本：** 0.19.1~ynh1
+**分发版本：** 0.19.2~ynh1
 
 ## 截图
 
