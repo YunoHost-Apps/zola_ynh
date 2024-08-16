@@ -5,7 +5,7 @@ NON debe editarse manualmente.
 
 # Zola para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/zola.svg)](https://dash.yunohost.org/appci/app/zola) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/zola.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/zola.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/zola.svg)](https://ci-apps.yunohost.org/ci/apps/zola/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/zola.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/zola.maintain.svg)
 
 [![Instalar Zola con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=zola)
 
@@ -21,7 +21,7 @@ Zola is a [Static Site Generator](https://en.wikipedia.org/wiki/Static_site_gene
 With this package, Zola will automatically regenerate ([using Systemd Path Units](https://www.putorius.net/systemd-path-units.html)) your website if any change is made to your sources.
 
 
-**Versión proporcionada:** 0.18.0~ynh4
+**Versión proporcionada:** 0.19.2~ynh1
 
 ## Capturas de pantalla
 
