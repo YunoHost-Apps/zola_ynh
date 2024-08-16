@@ -7,7 +7,7 @@ name = "Zola"
 description.en = "A static site generator"
 description.fr = "Un générateur de site statique"
 
-version = "0.19.2~ynh1"
+version = "0.19.2~ynh2"
 
 maintainers = [ "OniriCorpe" ]
 
