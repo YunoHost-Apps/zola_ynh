@@ -69,7 +69,7 @@ if $auto_rebuild; then
     systemctl start "$app.path"
 fi
 
-yunohost service add "$app" --description="Zola" --log="/var/log/$app/$app.log" --test_status="systemctl is-active zola.path"
+yunohost service add "$app" --description="Zola" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
 
 ynh_use_logrotate
 
