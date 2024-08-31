@@ -12,12 +12,12 @@ source /usr/share/yunohost/helpers
 #=================================================
 
 auto_rebuild=$(convert_bool "$YNH_APP_ARG_AUTO_REBUILD")
-ynh_app_setting_set --app="$app" --key=auto_rebuild --value="$auto_rebuild"
+ynh_app_setting_set --key=auto_rebuild --value="$auto_rebuild"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
@@ -29,40 +29,38 @@ chmod +x "$install_dir/zola"
 ### $install_dir will automatically be initialized with some decent
 ### permission by default ... however, you may need to recursively reapply
 ### ownership to all files such as after the ynh_setup_source step
-chown -R "$app:www-data" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding $app's configuration files..." --weight=1
+ynh_script_progression "Adding $app's configuration files..."
 
-ynh_add_config --template="config.toml" --destination="$install_dir/config.toml"
+ynh_config_add --template="config.toml" --destination="$install_dir/config.toml"
 
 # FIXME: this should be handled by the core in the future
 ### You may need to use chmod 600 instead of 400,
 ### for example if the app is expected to be able to modify its own config
-chmod 400 "$install_dir/config.toml"
-chown "$app:$app" "$install_dir/config.toml"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 400 "$install_dir/config.toml"
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown "$app:$app" "$install_dir/config.toml"
 
 mkdir -p "$install_dir/content" "$install_dir/static" "$install_dir/templates" "$install_dir/themes/yunohost/templates"
 
-ynh_add_config --template="theme.toml" --destination="$install_dir/themes/yunohost/theme.toml"
-ynh_add_config --template="theme.html" --destination="$install_dir/themes/yunohost/templates/index.html"
+ynh_config_add --template="theme.toml" --destination="$install_dir/themes/yunohost/theme.toml"
+ynh_config_add --template="theme.html" --destination="$install_dir/themes/yunohost/templates/index.html"
 
-ynh_add_config --template="_index.md" --destination="$install_dir/content/_index.md"
+ynh_config_add --template="_index.md" --destination="$install_dir/content/_index.md"
 
-chown -R "$app:www-data" "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 # adding systemd configs
-ynh_add_config --template="systemd.service" --destination="/etc/systemd/system/$app.service"
-ynh_add_config --template="systemd.path" --destination="/etc/systemd/system/$app.path"
+ynh_config_add --destination="/etc/systemd/system/$app.service"
+ynh_config_add --template="systemd.path" --destination="/etc/systemd/system/$app.path"
 systemctl daemon-reload
 if $auto_rebuild; then
     systemctl enable "$app.path" --quiet
@@ -71,15 +69,15 @@ fi
 
 yunohost service add "$app" --description="Zola" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
 
-ynh_use_logrotate
+ynh_config_add_logrotate
 
 #=================================================
 # DEFAULT WEBSITE GENERATION
 #=================================================
 
-ynh_exec_as "$app" "$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml" build
+ynh_exec_as_app "$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml" build
 
 #=================================================
 # END OF SCRIPT
 #=================================================
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
