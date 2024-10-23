@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "zola"
 name = "Zola"
-description.en = "A static site generator"
-description.fr = "Un générateur de site statique"
+description.en = "Static site generator"
+description.fr = "Générateur de site statique"
 
 version = "0.19.2~ynh2"
 
@@ -19,7 +19,7 @@ code = "https://github.com/getzola/zola"
 fund = "https://github.com/sponsors/Keats"
 
 [integration]
-yunohost = ">= 11.2.18"
+yunohost = ">= 11.2.30"
 helpers_version = "2.1"
 architectures = [ "amd64" ]
 multi_instance = true
