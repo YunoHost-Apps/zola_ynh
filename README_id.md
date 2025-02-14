@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Zola untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/zola.svg)](https://ci-apps.yunohost.org/ci/apps/zola/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/zola.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/zola.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/zola)](https://ci-apps.yunohost.org/ci/apps/zola/)
+![Status kerja](https://apps.yunohost.org/badge/state/zola)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/zola)
 
 [![Pasang Zola dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=zola)
 
@@ -21,7 +23,7 @@ Zola is a [Static Site Generator](https://en.wikipedia.org/wiki/Static_site_gene
 With this package, Zola will automatically regenerate ([using Systemd Path Units](https://www.putorius.net/systemd-path-units.html)) your website if any change is made to your sources.
 
 
-**Versi terkirim:** 0.19.2~ynh2
+**Versi terkirim:** 0.20.0~ynh1
 
 ## Tangkapan Layar
 
