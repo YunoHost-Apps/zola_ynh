@@ -7,7 +7,7 @@ name = "Zola"
 description.en = "A static site generator"
 description.fr = "Un générateur de site statique"
 
-version = "0.19.2~ynh2"
+version = "0.20.0~ynh1"
 
 maintainers = [ "OniriCorpe" ]
 
@@ -49,8 +49,8 @@ ram.runtime = "50M"
     [resources.sources]
 
     [resources.sources.main]
-    url = "https://github.com/getzola/zola/releases/download/v0.19.2/zola-v0.19.2-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 = "0798e69b86c628ddcb264ebd86c8cc8dce7670b9049060bf94faa73f6857cd9c"
+    url = "https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 = "ca7ed5b33a739c5b5b35a0e207e5c3578a652cd12b61c675763b3ff34c322d08"
     in_subdir = false
 
     autoupdate.strategy = "latest_github_release"
