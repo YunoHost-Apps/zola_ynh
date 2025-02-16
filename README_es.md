@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # Zola para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/zola.svg)](https://ci-apps.yunohost.org/ci/apps/zola/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/zola.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/zola.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/zola)](https://ci-apps.yunohost.org/ci/apps/zola/)
+![Estado funcional](https://apps.yunohost.org/badge/state/zola)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/zola)
 
 [![Instalar Zola con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=zola)
 
@@ -21,7 +23,7 @@ Zola is a [Static Site Generator](https://en.wikipedia.org/wiki/Static_site_gene
 With this package, Zola will automatically regenerate ([using Systemd Path Units](https://www.putorius.net/systemd-path-units.html)) your website if any change is made to your sources.
 
 
-**Versión actual:** 0.19.2~ynh2
+**Versión actual:** 0.20.0~ynh1
 
 ## Capturas
 
@@ -37,7 +39,7 @@ With this package, Zola will automatically regenerate ([using Systemd Path Units
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/zola_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/zola_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
