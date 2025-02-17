@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # Zola YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/zola.svg)](https://ci-apps.yunohost.org/ci/apps/zola/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/zola.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/zola.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/zola)](https://ci-apps.yunohost.org/ci/apps/zola/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/zola)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/zola)
 
 [![Instalatu Zola YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=zola)
 
@@ -21,7 +23,7 @@ Zola is a [Static Site Generator](https://en.wikipedia.org/wiki/Static_site_gene
 With this package, Zola will automatically regenerate ([using Systemd Path Units](https://www.putorius.net/systemd-path-units.html)) your website if any change is made to your sources.
 
 
-**Paketatutako bertsioa:** 0.19.2~ynh2
+**Paketatutako bertsioa:** 0.20.0~ynh1
 
 ## Pantaila-argazkiak
 
