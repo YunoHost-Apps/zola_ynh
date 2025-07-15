@@ -8,7 +8,7 @@ It shall NOT be edited by hand.
   Zola, packaged for YunoHost
 </h1>
 
-A static site generator
+Static site generator
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://www.getzola.org/)
 [![Version: 0.21.0~ynh1](https://img.shields.io/badge/Version-0.21.0~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/zola/)

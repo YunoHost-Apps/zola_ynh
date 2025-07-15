@@ -1,83 +1,58 @@
 #!/bin/bash
 
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
-# Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
 
-ls -l "$install_dir"
-
 chmod +x "$install_dir/zola"
-
-### $install_dir will automatically be initialized with some decent
-### permission by default ... however, you may need to recursively reapply
-### ownership to all files such as after the ynh_setup_source step
-chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding $app's configuration files..." --weight=1
+ynh_script_progression "Adding $app's configuration files..."
 
-ynh_add_config --template="config.toml" --destination="$install_dir/config.toml"
-
-# FIXME: this should be handled by the core in the future
-### You may need to use chmod 600 instead of 400,
-### for example if the app is expected to be able to modify its own config
-chmod 400 "$install_dir/config.toml"
-chown "$app:$app" "$install_dir/config.toml"
+ynh_config_add --template="config.toml" --destination="$install_dir/config.toml"
 
 mkdir -p "$install_dir/content" "$install_dir/static" "$install_dir/templates" "$install_dir/themes/yunohost/templates"
 
-ynh_add_config --template="theme.toml" --destination="$install_dir/themes/yunohost/theme.toml"
-ynh_add_config --template="theme.html" --destination="$install_dir/themes/yunohost/templates/index.html"
-
-ynh_add_config --template="_index.md" --destination="$install_dir/content/_index.md"
-
-chown -R "$app:www-data" "$install_dir"
+ynh_config_add --template="theme.toml" --destination="$install_dir/themes/yunohost/theme.toml"
+ynh_config_add --template="theme.html" --destination="$install_dir/themes/yunohost/templates/index.html"
+ynh_config_add --template="_index.md" --destination="$install_dir/content/_index.md"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-# adding systemd configs
-ynh_add_config --template="systemd.service" --destination="/etc/systemd/system/$app.service"
-ynh_add_config --template="systemd.path" --destination="/etc/systemd/system/$app.path"
-systemctl daemon-reload
-if $auto_rebuild; then
-    systemctl enable "$app.path" --quiet
-    systemctl start "$app.path"
+ynh_config_add_systemd
+ynh_config_add_systemd --service="${app}-path" --template="path.service"
+
+yunohost service add "$app" --description="Static site generator" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
+
+ynh_config_add_logrotate
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression "Starting $app's systemd service..."
+
+if [ $auto_rebuild == "true" ]; then
+    systemctl --service="$app-path" --action="start"
 fi
 
-yunohost service add "$app" --description="Zola" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
-
-ynh_use_logrotate
-
-#=================================================
-# DEFAULT WEBSITE GENERATION
-#=================================================
-
-# runned using systemctl and not a direct command line to avoid conflicting withe the '.path'
-# (running two build process at the same time is buggy and can lead to errors)
-systemctl start "$app.service"
-
-# wait for the site to be builded (while the service is active, it's not done)
-while (systemctl -q is-active "$app.service") do sleep 0.01; done
+# Start a systemd service
+ynh_systemctl --service="$app" --action="start"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
-ynh_script_progression --message="Installation of $app completed" --last
+
+ynh_script_progression "Installation of $app completed"
