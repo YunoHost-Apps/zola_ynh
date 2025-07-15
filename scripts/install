@@ -44,7 +44,7 @@ ynh_config_add_logrotate
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-if $auto_rebuild; then
+if [ $database == "true" ]; then
     systemctl --service="$app-path" --action="start"
 fi
 
