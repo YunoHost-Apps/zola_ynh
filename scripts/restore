@@ -20,9 +20,10 @@ ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 ynh_restore "/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
 
+ynh_restore "/etc/systemd/system/$app.path"
 if $auto_rebuild; then
-    ynh_restore "/etc/systemd/system/$app.path"
     systemctl enable "$app.path" --quiet
+    systemctl start "$app.path"
 fi
 
 yunohost service add "$app" --description="Static site generator" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
