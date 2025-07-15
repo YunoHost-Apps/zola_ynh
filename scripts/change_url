@@ -11,6 +11,13 @@ ynh_script_progression "Updating NGINX web server configuration..."
 ynh_config_change_url_nginx
 
 #=================================================
+# APP INITIAL CONFIGURATION
+#=================================================
+ynh_script_progression "Adding $app's configuration files..."
+
+ynh_config_add --template="config.toml" --destination="$install_dir/config.toml"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 
