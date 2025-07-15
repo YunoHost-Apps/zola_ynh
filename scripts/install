@@ -32,7 +32,6 @@ mkdir -p "$install_dir/content" "$install_dir/static" "$install_dir/templates" "
 
 ynh_config_add --template="theme.toml" --destination="$install_dir/themes/yunohost/theme.toml"
 ynh_config_add --template="theme.html" --destination="$install_dir/themes/yunohost/templates/index.html"
-
 ynh_config_add --template="_index.md" --destination="$install_dir/content/_index.md"
 
 #=================================================
@@ -45,7 +44,7 @@ ynh_config_add_nginx
 ynh_config_add_systemd
 
 if $auto_rebuild; then
-    ynh_config_add_systemd --template="systemd.path" --destination="/etc/systemd/system/$app.path"  
+    ynh_config_add_systemd --service=$app.path --template="systemd.path"
 fi
 
 yunohost service add "$app" --description="Static site generator" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
