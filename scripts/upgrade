@@ -27,10 +27,6 @@ ynh_script_progression --message="Upgrading source files..." --weight=1
 ynh_setup_source --dest_dir="$install_dir"
 
 chmod +x "$install_dir/zola"
-
-### $install_dir will automatically be initialized with some decent
-### permissions by default ... however, you may need to recursively reapply
-### ownership to all files such as after the ynh_setup_source step
 chown -R "$app:www-data" "$install_dir"
 
 #=================================================

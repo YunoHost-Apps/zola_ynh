@@ -8,13 +8,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# RETRIEVE ARGUMENTS FROM THE MANIFEST
-#=================================================
-
-auto_rebuild=$(convert_bool "$YNH_APP_ARG_AUTO_REBUILD")
-ynh_app_setting_set --app="$app" --key=auto_rebuild --value="$auto_rebuild"
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
