@@ -1,5 +1,5 @@
 [Unit]
-Description="Run 'zola build'"
+Description=Zola: Static site generator
 
 [Service]
 Type=exec
@@ -10,8 +10,6 @@ ExecStart=__INSTALL_DIR__/zola build
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
-### Depending on specificities of your service/app, you may need to tweak these
-### .. but this should be a good baseline
 # Sandboxing options to harden security
 # Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
 NoNewPrivileges=yes
