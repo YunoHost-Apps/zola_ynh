@@ -35,9 +35,11 @@ ynh_script_progression "Adding system configurations related to $app..."
 ynh_config_add_nginx
 
 ynh_config_add_systemd
+ynh_config_add_systemd --service=$app.path --template="systemd.path"
 
 if $auto_rebuild; then
-    ynh_config_add_systemd --service=$app.path --template="systemd.path"
+    systemctl enable "$app.path" --quiet
+    systemctl start "$app.path"
 fi
 
 yunohost service add "$app" --description="Static site generator" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
@@ -51,10 +53,6 @@ ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
 ynh_systemctl --service="$app" --action="start"
-
-if $auto_rebuild; then
-    ynh_systemctl --service="$app.path" --action="start"
-fi
 
 #=================================================
 # END OF SCRIPT
