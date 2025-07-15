@@ -42,25 +42,30 @@ ynh_script_progression "Adding system configurations related to $app..."
 
 ynh_config_add_nginx
 
-ynh_config_add --destination="/etc/systemd/system/$app.service"
-ynh_config_add --template="systemd.path" --destination="/etc/systemd/system/$app.path"
-systemctl daemon-reload
+ynh_config_add_systemd
+
 if $auto_rebuild; then
-    systemctl enable "$app.path" --quiet
-    systemctl start "$app.path"
+    ynh_config_add_systemd --template="systemd.path" --destination="/etc/systemd/system/$app.path"  
 fi
 
-yunohost service add "$app" --description="Zola" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
+yunohost service add "$app" --description="Static site generator" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
 
 ynh_config_add_logrotate
 
 #=================================================
-# DEFAULT WEBSITE GENERATION
+# START SYSTEMD SERVICE
 #=================================================
+ynh_script_progression "Starting $app's systemd service..."
 
-ynh_exec_as_app "$install_dir/zola" --root "$install_dir" --config "$install_dir/config.toml" build
+# Start a systemd service
+ynh_systemctl --service="$app" --action="start"
+
+if $auto_rebuild; then
+    ynh_systemctl --service="$app.path" --action="start"
+fi
 
 #=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Installation of $app completed"

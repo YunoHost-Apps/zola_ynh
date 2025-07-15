@@ -18,15 +18,14 @@ ynh_script_progression "Restoring system configurations related to $app..."
 ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
 ynh_restore "/etc/systemd/system/$app.service"
-ynh_restore "/etc/systemd/system/$app.path"
-systemctl daemon-reload
+systemctl enable "$app.service" --quiet
 
 if $auto_rebuild; then
+    ynh_restore "/etc/systemd/system/$app.path"
     systemctl enable "$app.path" --quiet
-    systemctl start "$app.path"
 fi
 
-yunohost service add "$app" --description="Zola" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
+yunohost service add "$app" --description="Static site generator" --log="/var/log/$app/$app.log" --test_status="systemctl is-active $app.path"
 
 ynh_restore "/etc/logrotate.d/$app"
 
@@ -40,6 +39,12 @@ ynh_restore "/var/log/$app/"
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
 #=================================================
 ynh_script_progression "Reloading NGINX web server and $app's service..."
+
+ynh_systemctl --service="$app" --action="start"
+
+if $auto_rebuild; then
+    ynh_systemctl --service="$app.path" --action="start"
+fi
 
 ynh_systemctl --service=nginx --action=reload
 
