@@ -42,10 +42,6 @@ ynh_script_progression "Reloading NGINX web server and $app's service..."
 
 ynh_systemctl --service="$app" --action="start"
 
-if $auto_rebuild; then
-    ynh_systemctl --service="$app.path" --action="start"
-fi
-
 ynh_systemctl --service=nginx --action=reload
 
 #=================================================
