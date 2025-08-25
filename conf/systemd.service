@@ -1,11 +1,12 @@
 [Unit]
-Description=Zola: Static site generator
+Description=Zola: Static site generator (Run 'zola build')
 
 [Service]
 Type=exec
 User=__APP__
-Group=__APP__
+Group=www-data
 WorkingDirectory=__INSTALL_DIR__/
+ExecStartPre=date --rfc-3339=s
 ExecStart=__INSTALL_DIR__/zola build
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit

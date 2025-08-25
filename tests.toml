@@ -9,3 +9,5 @@ test_format = 1.0
     # -------------------------------
 
     args.auto_rebuild = "true"
+
+    test_upgrade_from.ee5e9c24bb22c7334a5c62390f391942e83c530d.name = "Upgrade from 0.20.0~ynh2"
