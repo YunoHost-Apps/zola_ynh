@@ -13,14 +13,12 @@ ynh_config_remove_logrotate
 if ynh_hide_warnings yunohost service status "$app" >/dev/null; then
     yunohost service remove "$app"
 fi
-if ynh_hide_warnings yunohost service status "$app" >/dev/null; then
-    yunohost service remove "$app-path"
-fi
 
 ynh_config_remove_systemd
 
-ynh_config_remove_systemd service=$app-path.service
-
+systemctl disable "$app.path" --quiet
+ynh_safe_rm "/etc/systemd/system/$app.path"
+systemctl daemon-reload
 
 ynh_config_remove_nginx
 
