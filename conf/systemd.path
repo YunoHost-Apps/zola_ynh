@@ -2,8 +2,6 @@
 Description="Lauch 'zola build' on content change"
 
 [Path]
-User=__APP__
-Group=__APP__
 PathModified=__INSTALL_DIR__/content
 PathModified=__INSTALL_DIR__/static
 PathModified=__INSTALL_DIR__/templates
