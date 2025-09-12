@@ -10,6 +10,11 @@ ynh_script_progression "Ensuring downward compatibility..."
 
 ynh_app_setting_set_default --key=auto_rebuild --value="true"
 
+if [ -f "/etc/systemd/system/$app-path.service" ]; then
+    systemctl disable "$app-path.service" --quiet
+    ynh_safe_rm "/etc/systemd/system/$app-path.service"
+fi
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
