@@ -93,7 +93,7 @@ generate_robots_txt = true
 render_emoji = false
 
 # CSS class to add to external links (e.g. "external-link")
-external_links_class =
+external_links_class = ""
 
 # Whether external links are to be opened in a new tab
 # If this is true, a `rel="noopener"` will always automatically be added for security reasons
@@ -148,28 +148,28 @@ github_alerts = false
 insert_anchor_links = "none"
 
 # Syntax highlighting configuration (optional)
-[markdown.highlighting]
+#[markdown.highlighting]
 # When set to "true", missing highlight languages are treated as errors. Defaults to false but recommended to set to true.
-error_on_missing_language = false
+#error_on_missing_language = false
 
 # Whether to use inline hex colours (`inline`) or CSS classes (`class`) 
-style = "inline"
+#style = "inline"
 
 # Selecting a theme is always required: you have a choice between single (1) or dual themes (2).
 # Only outputting CSS classes like before 0.22 is not possible anymore.
 # 1. If you use a single theme, put its name here. See the syntax highlighting page for the possible choices.
-theme = ""
+#theme = ""
 
 # 2. If you want light/dark themes, use the 2 fields below instead. See the syntax highlighting page for the possible choices.
-light_theme = ""
-dark_theme = ""
+#light_theme = ""
+#dark_theme = ""
 
 # A list of files for additional JSON TextMate grammars
-extra_grammars = []
+#extra_grammars = []
 
 # A list of files for additional JSON TextMate themes
 # Get themes from https://textmate-grammars-themes.netlify.app/
-extra_themes = []
+#extra_themes = []
 
 # Configuration of the link checker.
 [link_checker]
