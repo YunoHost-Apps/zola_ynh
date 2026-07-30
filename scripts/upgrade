@@ -15,6 +15,12 @@ if [ -f "/etc/systemd/system/$app-path.service" ]; then
     ynh_safe_rm "/etc/systemd/system/$app-path.service"
 fi
 
+
+if ynh_app_upgrading_from_version_before 0.22.1~ynh1; then
+    ynh_script_progression "Reapplying $app configuration..."
+    ynh_config_add --template="config.toml" --destination="$install_dir/config.toml"
+fi
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
