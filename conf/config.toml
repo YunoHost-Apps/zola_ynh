@@ -40,6 +40,9 @@ ignored_static = []
 # When set to "true", a feed is automatically generated.
 generate_feeds = true
 
+# When set to "all", paginated pages are not a part of the sitemap, default is "none"
+exclude_paginated_pages_in_sitemap = "none"
+
 # The filenames to use for the feeds. Used as the template filenames, too.
 # Defaults to ["atom.xml"], which has a built-in template that renders an Atom 1.0 feed.
 # There is also a built-in template "rss.xml" that renders an RSS 2.0 feed.
@@ -69,25 +72,28 @@ author = ""
 #
 taxonomies = []
 
+# Optional base path for all taxonomies. If set, all taxonomy paths will be relative to this path.
+# For example, if taxonomy_root is "blog" and taxonomy is "tags", the path will be /blog/tags/
+# taxonomy_root = "blog"
+
 # When set to "true", a search index is built from the pages and section
 # content for `default_language`.
 build_search_index = false
 
+# When set to "false", Sitemap.xml is not generated
+generate_sitemap = true
+
+# When set to "false", robots.txt is not generated
+generate_robots_txt = true
+
 # Configuration of the Markdown rendering
 [markdown]
-# When set to "true", all code blocks are highlighted.
-highlight_code = false
-
-# A list of directories used to search for additional `.sublime-syntax` and `.tmTheme` files.
-extra_syntaxes_and_themes = []
-
-# The theme to use for code highlighting.
-# See below for list of allowed values.
-highlight_theme = "dracula"
-
 # When set to "true", emoji aliases translated to their corresponding
 # Unicode emoji equivalent in the rendered Markdown files. (e.g.: :smile: => 😄)
 render_emoji = false
+
+# CSS class to add to external links (e.g. "external-link")
+external_links_class = ""
 
 # Whether external links are to be opened in a new tab
 # If this is true, a `rel="noopener"` will always automatically be added for security reasons
@@ -99,14 +105,71 @@ external_links_no_follow = false
 # Whether to set rel="noreferrer" for all external links
 external_links_no_referrer = false
 
+# Whether to set rel="external" for all external links
+external_links_external = true
+
 # Whether smart punctuation is enabled (changing quotes, dashes, dots in their typographic form)
 # For example, `...` into `…`, `"quote"` into `“curly”` etc
 smart_punctuation = false
+
+# Whether parsing of definition lists is enabled
+definition_list = false
 
 # Whether to set decoding="async" and loading="lazy" for all images
 # When turned on, the alt text must be plain text.
 # For example, `![xx](...)` is ok but `![*x*x](...)` isn’t ok
 lazy_async_image = false
+
+# Whether footnotes are rendered in the GitHub-style (at the bottom, with back references) or plain (in the place, where they are defined)
+bottom_footnotes = false
+
+# When set to "true", support for GitHub-style alerts, a.k.a. callouts or admonitions, is enabled in the Markdown parser.
+# For example, this Markdown syntax:
+#
+#     > [!NOTE]
+#     > alert note
+#
+# will result in the following generated HTML:
+#
+#     <blockquote class="markdown-alert-note">
+#     <p>alert note</p>
+#     </blockquote>
+#
+# where the CSS class name suffix may be `note`, `tip`, `important`, `warning`, or `caution`, depending on the alert type.
+# Visual appearance depends on theme-level support; refer to your theme's documentation for more information.
+github_alerts = false
+
+# This determines whether to insert a link for each header like the ones you can see on this site if you hover over
+# a header.
+# The default template can be overridden by creating an `anchor-link.html` file in the `templates` directory.
+# This value can be "left", "right", "heading" or "none".
+# "heading" means the full heading becomes the text of the anchor.
+# See "Internal links & deep linking" in the documentation for more information.
+insert_anchor_links = "none"
+
+# Syntax highlighting configuration (optional)
+#[markdown.highlighting]
+# When set to "true", missing highlight languages are treated as errors. Defaults to false but recommended to set to true.
+#error_on_missing_language = false
+
+# Whether to use inline hex colours (`inline`) or CSS classes (`class`) 
+#style = "inline"
+
+# Selecting a theme is always required: you have a choice between single (1) or dual themes (2).
+# Only outputting CSS classes like before 0.22 is not possible anymore.
+# 1. If you use a single theme, put its name here. See the syntax highlighting page for the possible choices.
+#theme = ""
+
+# 2. If you want light/dark themes, use the 2 fields below instead. See the syntax highlighting page for the possible choices.
+#light_theme = ""
+#dark_theme = ""
+
+# A list of files for additional JSON TextMate grammars
+#extra_grammars = []
+
+# A list of files for additional JSON TextMate themes
+# Get themes from https://textmate-grammars-themes.netlify.app/
+#extra_themes = []
 
 # Configuration of the link checker.
 [link_checker]
@@ -142,16 +205,20 @@ paths_keep_dates = false
 include_title = true
 # Whether to include the description of the page/section in the index
 include_description = false
-# Whether to include the path of the page/section in the index
+# Whether to include the RFC3339 datetime of the page in the search index
+include_date = false
+# Whether to include the path of the page/section in the index (the permalink is always included)
 include_path = false
 # Whether to include the rendered content of the page/section in the index
 include_content = true
-# At which character to truncate the content to. Useful if you have a lot of pages and the index would
+# At which code point to truncate the content to. Useful if you have a lot of pages and the index would
 # become too big to load on the site. Defaults to not being set.
 # truncate_content_length = 100
 
-# Wether to produce the search index as a javascript file or as a JSON file
-# Accepted value "elasticlunr_javascript" or "elasticlunr_json"
+# Whether to produce the search index as a javascript file or as a JSON file
+# Accepted values:
+# - "elasticlunr_javascript", "elasticlunr_json"
+# - "fuse_javascript", "fuse_json"
 index_format = "elasticlunr_javascript"
 
 # Optional translation object for the default language
@@ -171,7 +238,7 @@ index_format = "elasticlunr_javascript"
 # For example
 # [languages.fr]
 # title = "Mon blog"
-# generate_feed = true
+# generate_feeds = true
 # taxonomies = [
 #    {name = "auteurs"},
 #    {name = "tags"},
