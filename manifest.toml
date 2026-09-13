@@ -7,7 +7,7 @@ name = "Zola"
 description.en = "Static site generator"
 description.fr = "Générateur de site statique"
 
-version = "0.23.5~ynh1"
+version = "0.23.6~ynh1"
 
 maintainers = [ "OniriCorpe" ]
 
@@ -51,10 +51,10 @@ ram.runtime = "50M"
 
     [resources.sources.main]
     in_subdir = false
-    amd64.url = "https://github.com/getzola/zola/releases/download/v0.23.5/zola-v0.23.5-x86_64-unknown-linux-gnu.tar.gz"
-    amd64.sha256 = "f9b864c54fb8ef598ae34337d72a0e9f24e84a0b051657a7f231a3f2a3c02e34"
-    arm64.url = "https://github.com/getzola/zola/releases/download/v0.23.5/zola-v0.23.5-aarch64-unknown-linux-gnu.tar.gz"
-    arm64.sha256 = "3e61af6cf2a2072a2397f3be7121b5032b46c6ec93bf46d154c8e72abc104c49"
+    amd64.url = "https://github.com/getzola/zola/releases/download/v0.23.6/zola-v0.23.6-x86_64-unknown-linux-gnu.tar.gz"
+    amd64.sha256 = "8f5132b3522412d04e395e0b25f6d68613ad272a873e54a2b3ebf664873024a4"
+    arm64.url = "https://github.com/getzola/zola/releases/download/v0.23.6/zola-v0.23.6-aarch64-unknown-linux-gnu.tar.gz"
+    arm64.sha256 = "266448fffbf7c7004ca399d0e76dd699541771096d8a42aede98cebe2a029d02"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "^zola-v.*-x86_64-unknown-linux-gnu.tar.gz$"
